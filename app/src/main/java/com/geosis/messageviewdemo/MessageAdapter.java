@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,12 +17,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private List<Message> mMessageList;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        View messageView;
         TextView messageTime;
         TextView messageContent;
         TextView moreInfo;
 
         public ViewHolder(View view){
             super(view);
+            messageView=view;
             messageTime=(TextView)view.findViewById(R.id.time);
             messageContent=(TextView)view.findViewById(R.id.content);
             moreInfo=(TextView) view.findViewById(R.id.moreInfo);
@@ -52,6 +55,23 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
+
+        // 长按删除某个子项
+        holder.messageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int position=holder.getAdapterPosition();
+                mMessageList.remove(position);
+                notifyItemRemoved(position); // 通知界面更新
+                notifyItemRangeChanged(position,mMessageList.size());
+
+                Context context=view.getContext();
+                Toast.makeText(context,"Message Deleted",Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        });
+
         return holder;
     }
 
