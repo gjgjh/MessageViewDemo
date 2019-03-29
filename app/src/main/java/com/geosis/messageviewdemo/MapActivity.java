@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
@@ -22,19 +23,25 @@ public class MapActivity extends AppCompatActivity {
 
     private MapView mMapView = null;
     private AMap aMap=null;
-    LatLng markerPosition = new LatLng(39.993308, 116.473258);
+    LatLng markerPosition = null;
+    private Message message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        //获取地图控件引用
+        // 获取地图控件
         mMapView = (MapView) findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
+
+        // 获取messgae对象，并在信息窗体显示
+        message=(Message)getIntent().getSerializableExtra("message_item");
+        markerPosition=message.getM_location();
         init();
     }
 
+    // 显示信息窗体
     private void init() {
         if (aMap == null) {
             aMap=mMapView.getMap();
@@ -42,6 +49,60 @@ public class MapActivity extends AppCompatActivity {
             aMap.moveCamera(CameraUpdateFactory.zoomTo(14f));
         }
         addGrowMarker();
+
+        TextView textView;
+        textView=(TextView)findViewById(R.id.earthquake_time);
+        textView.setText(message.getM_time());
+        textView=(TextView)findViewById(R.id.AdminRigion);
+        textView.setText(message.getM_admin_region());
+        textView=(TextView)findViewById(R.id.Location);
+        textView.setText("经度"+message.getM_location().longitude+" 纬度"+message.getM_location().latitude);
+        textView=(TextView)findViewById(R.id.rank);
+        textView.setText(""+message.getM_rank());
+
+        textView=(TextView)findViewById(R.id.description);
+        switch (message.getM_description()){
+            case 0:
+                textView.setText("无震感");
+                break;
+            case 1:
+                textView.setText("仅仅有感");
+                break;
+            case 2:
+                textView.setText("可行走");
+                break;
+            case 3:
+                textView.setText("站立不稳，行走困难");
+                break;
+            case 4:
+                textView.setText("被地震摔倒");
+                break;
+            default:
+                textView.setText("null");
+                break;
+        }
+
+        textView=(TextView)findViewById(R.id.source);
+        switch (message.getM_info_source()){
+            case 0:
+                textView.setText("听说");
+                break;
+            case 1:
+                textView.setText("亲眼目睹");
+                break;
+            case 2:
+                textView.setText("政府数据");
+                break;
+            case 3:
+                textView.setText("估计");
+                break;
+            default:
+                textView.setText("null");
+                break;
+        }
+
+        textView=(TextView)findViewById(R.id.remark);
+        textView.setText(message.getM_remark());
     }
 
     // 添加带生长效果marker

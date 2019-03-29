@@ -1,39 +1,59 @@
 package com.geosis.messageviewdemo;
 
-public class Message {
+import com.amap.api.maps.model.LatLng;
 
-    private String m_content;
-    private String m_location;
-    private int m_year;
-    private int m_month;
-    private int m_day;
+import java.io.Serializable;
+import java.util.Date;
 
-    public Message(String content,String location,int year,int month,int day)
+public class Message implements Serializable {
+    private String m_time;
+    private String m_admin_region;
+    private double m_longitude;
+    private double m_latitude;
+    private int m_rank;
+    private int m_description;
+    private int m_info_source;
+    private String m_remark="空";
+
+    public Message(Date time,String admin_region,LatLng location,int rank,int description,int info_source,String remark)
     {
-        m_content=content;
-        m_location=location;
-        m_year=year;
-        m_month=month;
-        m_day=day;
+        m_admin_region=admin_region;
+        m_longitude=location.longitude;
+        m_latitude=location.latitude;
+        m_rank=rank;
+        m_description=description;
+        m_info_source=info_source;
+        m_remark=remark;
+
+        m_time=(time.getYear()+1900)+"-"+time.getMonth()+"-"+time.getDay()+" "+
+                time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
     }
 
-    public String getContent() {
-        return m_content;
+    public String getM_time() {
+        return m_time;
     }
 
-    public String getLocation() {
-        return m_location;
+    public String getM_admin_region() {
+        return m_admin_region;
     }
 
-    public int getYear() {
-        return m_year;
+    public LatLng getM_location() {
+        return new LatLng(m_latitude,m_longitude);
     }
 
-    public int getMonth() {
-        return m_month;
+    public int getM_rank() {
+        return m_rank;
     }
 
-    public int getDay() {
-        return m_day;
+    public int getM_description() {
+        return m_description;
+    }
+
+    public int getM_info_source() {
+        return m_info_source;
+    }
+
+    public String getM_remark() {
+        return m_remark;
     }
 }

@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.amap.api.maps.model.LatLng;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,24 +29,54 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMessages(){
         for(int i=0;i<2;++i){
-            Message message=new Message("发生地震3.2级，经度120，维度32","北京北京大学",2019,3,27);
+            Message message=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "威远县",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message);
-            Message message2=new Message("发生地震3.2级，经度120，维度32","汶川xx村",2012,2,1);
+            Message message2=new Message(
+                    new Date(2012-1900,5,12,12,28,20),
+                    "汶川市",
+                    new LatLng(29.46,105),
+                    7,1,0,"");
             messageList.add(message2);
-            Message message3=new Message("发生地震3.2级，经度120，维度32","新疆yy村",2013,12,7);
+            Message message3=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "北京市",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message3);
-            Message message4=new Message("发生地震3.2级，经度120，维度32","江西zz路",2019,3,27);
+            Message message4=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "xxx",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message4);
-            Message message5=new Message("发生地震3.2级，经度120，维度32","汶川xx村",2012,2,1);
+            Message message5=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "yyy",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message5);
-            Message message6=new Message("发生地震3.2级，经度120，维度32","yy村",2013,12,7);
+            Message message6=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "zzz",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message6);
-            Message message7=new Message("发生地震3.2级，经度120，维度32","北京大学",2019,3,27);
+            Message message7=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "威远县",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message7);
-            Message message8=new Message("发生地震3.2级，经度120，维度32","汶川xx村",2012,2,1);
+            Message message8=new Message(
+                    new Date(2019-1900,2,26,23,59,59),
+                    "威远县",
+                    new LatLng(29.46,104.55),
+                    7,1,0,"");
             messageList.add(message8);
-            Message message9=new Message("发生地震3.2级，经度120，维度32","yy村",2013,12,7);
-            messageList.add(message9);
         }
     }
 }

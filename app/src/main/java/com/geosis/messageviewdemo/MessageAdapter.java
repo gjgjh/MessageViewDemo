@@ -16,17 +16,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private List<Message> mMessageList;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        TextView messageTime;
         TextView messageContent;
-        TextView messageLocation;
-        TextView messageDate;
-        ImageView moreInfo;
+        TextView moreInfo;
 
         public ViewHolder(View view){
             super(view);
-            messageContent=(TextView)view.findViewById(R.id.content_of_markpoint);
-            messageLocation=(TextView)view.findViewById(R.id.description_of_location);
-            messageDate=(TextView)view.findViewById(R.id.time_of_pickup);
-            moreInfo=(ImageView)view.findViewById(R.id.more_info);
+            messageTime=(TextView)view.findViewById(R.id.time);
+            messageContent=(TextView)view.findViewById(R.id.content);
+            moreInfo=(TextView) view.findViewById(R.id.moreInfo);
         }
     }
 
@@ -39,12 +37,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.view_point_information,parent,false);
-        ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+
+        // 点击子项启动活动，并传递Message对象
         holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context=view.getContext();
                 Intent intent=new Intent(context,MapActivity.class);
+
+                int position=holder.getAdapterPosition();
+                Message message=mMessageList.get(position);
+                intent.putExtra("message_item",message);
                 context.startActivity(intent);
             }
         });
@@ -55,9 +59,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Message message=mMessageList.get(position);
-        holder.messageContent.setText(message.getContent());
-        holder.messageLocation.setText(message.getLocation());
-        holder.messageDate.setText(message.getYear()+"年"+message.getMonth()+"月"+message.getDay()+"日");
+        holder.messageTime.setText(message.getM_time());
+        holder.messageContent.setText(message.getM_admin_region()+"发生"+
+                message.getM_rank()+"级地震，震源经度"+
+                message.getM_location().longitude+"，纬度"+
+                message.getM_location().latitude);
     }
 
     @Override
