@@ -2,11 +2,16 @@ package com.geosis.messageviewdemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +20,7 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
     private List<Message> mMessageList;
+    private DatabaseOpenHelper mdbHelper;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View messageView;
@@ -31,8 +37,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
-    public MessageAdapter(List<Message> messageList){
+    public MessageAdapter(List<Message> messageList,DatabaseOpenHelper dbHelper){
         mMessageList=messageList;
+        mdbHelper=dbHelper;
     }
 
     // 用于创建ViewHolder实例
@@ -56,17 +63,48 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             }
         });
 
-        // 长按删除某个子项
+        // 长按发送或删除某个子项
         holder.messageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                int position=holder.getAdapterPosition();
-                mMessageList.remove(position);
-                notifyItemRemoved(position); // 通知界面更新
-                notifyItemRangeChanged(position,mMessageList.size());
+                final Context context=view.getContext();
 
-                Context context=view.getContext();
-                Toast.makeText(context,"Message Deleted",Toast.LENGTH_SHORT).show();
+                // 把自定义的布局设置到dialog中
+                final AlertDialog dialog = new AlertDialog.Builder(context).create();
+                View view= LayoutInflater.from(context).inflate(R.layout.altert_dialog,null);
+
+                // 设置dialog在屏幕底部，并自底向上弹出动画
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.BOTTOM);
+                window.setWindowAnimations(R.style.DialogAnimation);
+                dialog.setView(view);
+                dialog.show();
+
+                // 设置点击事件
+                TextView send=(TextView)view.findViewById(R.id.send);
+                TextView delete=(TextView) view.findViewById(R.id.delete);
+                send.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context,"Send isn't implemented yet",Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
+                    }
+                });
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int position=holder.getAdapterPosition();
+                        SQLiteDatabase db=mdbHelper.getWritableDatabase();
+                        String uuid=mMessageList.get(position).getM_uuid();
+                        db.delete("Earthquake","uuid=?",new String[]{uuid}); // 从数据库中删除
+                        mMessageList.remove(position); // 从消息列表中删除
+                        notifyItemRemoved(position); // 通知界面更新
+                        notifyItemRangeChanged(position,mMessageList.size());
+
+                        Toast.makeText(context,"Message Deleted",Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
+                    }
+                });
 
                 return true;
             }

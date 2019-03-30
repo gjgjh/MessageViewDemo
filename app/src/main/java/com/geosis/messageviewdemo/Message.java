@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Message implements Serializable {
+    private String m_uuid;
     private String m_time;
     private String m_admin_region;
     private double m_longitude;
@@ -15,8 +16,9 @@ public class Message implements Serializable {
     private int m_info_source;
     private String m_remark="空";
 
-    public Message(Date time,String admin_region,LatLng location,int rank,int description,int info_source,String remark)
+    public Message(String uuid,Date time,String admin_region,LatLng location,int rank,int description,int info_source,String remark)
     {
+        m_uuid=uuid;
         m_admin_region=admin_region;
         m_longitude=location.longitude;
         m_latitude=location.latitude;
@@ -27,6 +29,10 @@ public class Message implements Serializable {
 
         m_time=(time.getYear()+1900)+"-"+time.getMonth()+"-"+time.getDay()+" "+
                 time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+    }
+
+    public String getM_uuid() {
+        return m_uuid;
     }
 
     public String getM_time() {
