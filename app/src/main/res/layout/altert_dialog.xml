@@ -6,60 +6,59 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:layout_margin="3dp"
-    android:elevation="0dp"
+    android:background="#eee"
     app:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#eee"
         android:orientation="vertical" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="10dp"
-            android:text="选 择 操 作"
+            android:padding="13dp"
+            android:text="选择要进行的操作"
             android:textSize="17dp"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
             android:background="#a6a6a6" />
 
         <TextView
             android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:text="发 送"
-            android:padding="10dp"
-            android:textSize="17dp"
-            android:background="#fff" />
+            android:gravity="left"
+            android:text="发送"
+            android:padding="13dp"
+            android:textSize="17dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
             android:background="#a6a6a6" />
 
         <TextView
             android:id="@+id/delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:text="删 除"
-            android:padding="10dp"
-            android:textSize="17dp"
-            android:background="#fff" />
+            android:gravity="left"
+            android:text="删除"
+            android:padding="13dp"
+            android:textSize="17dp" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

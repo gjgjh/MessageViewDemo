@@ -1,6 +1,5 @@
 package com.geosis.messageviewdemo;
 
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
@@ -23,7 +20,7 @@ public class MapActivity extends AppCompatActivity {
 
     private MapView mMapView = null;
     private AMap aMap=null;
-    LatLng markerPosition = null;
+    private LatLng markerPosition = null;
     private Message message;
 
     @Override

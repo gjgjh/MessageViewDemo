@@ -3,7 +3,6 @@ package com.geosis.messageviewdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -11,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +44,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.view_point_information,parent,false);
+                .inflate(R.layout.list_item,parent,false);
         final ViewHolder holder=new ViewHolder(view);
 
         // 点击子项启动活动，并传递Message对象
