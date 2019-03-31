@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private void addFakeMessages() {
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         db.execSQL("insert into Earthquake (uuid,time, adminregion, latitude, longitude, rank, desciption, infosource, remark) values(?,?,?,?,?,?,?,?,?)",
-                new String[]{UUID.randomUUID().toString(),""+(2019-1900)+",2,26,23,59,59","威远县","29.46","104.55","7","1","0","无备注"});
+                new String[]{UUID.randomUUID().toString(),""+(2019-1900)+",2,26,23,59,59","威远县","29.46","104.55","7","1","0","无备12312312312314如4天4访问法国4提高4覆盖4烦非法4非法" +
+                        "3人人日日3日3日3方钢管224高为人父无若翁绕弯儿无若翁热热无若翁绕弯儿翁3非注"});
         db.execSQL("insert into Earthquake (uuid,time, adminregion, latitude, longitude, rank, desciption, infosource, remark) values(?,?,?,?,?,?,?,?,?)",
                 new String[]{UUID.randomUUID().toString(),""+(2018-1900)+",2,26,23,59,59","汶川市","28","110","8","2","1","备注xxx"});
         db.execSQL("insert into Earthquake (uuid,time, adminregion, latitude, longitude, rank, desciption, infosource, remark) values(?,?,?,?,?,?,?,?,?)",

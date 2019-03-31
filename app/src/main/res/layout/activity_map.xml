@@ -1,181 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent">
-
-<com.amap.api.maps.MapView
-    android:id="@+id/map"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/info_window"
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:paddingBottom="40dp"
-        android:paddingTop="40dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="15dp"
+        android:layout_height="match_parent"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:alpha="0.7"
         android:background="#000"
-        android:orientation="vertical">
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="45dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/info_window"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="地震时刻："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="15dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/earthquake_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view1"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地震时刻："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="地点："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/earthquake_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view1"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/AdminRigion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view2"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地点："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="位置："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/AdminRigion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view2"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/Location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view3"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="位置："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="震级："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/Location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view3"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/rank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view4"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="震级："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="震感描述："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view4"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view5"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="震感描述："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="信息来源："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view5"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/source"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view6"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="信息来源："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text_view7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="备注："
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view6"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/remark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text_view7"
-                android:textColor="#fff"
-                android:padding="3dp"
-                android:textSize="16dp" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_view7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="备注："
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text_view7"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-</FrameLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

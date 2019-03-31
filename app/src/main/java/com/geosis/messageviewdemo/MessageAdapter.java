@@ -77,6 +77,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                 window.setWindowAnimations(R.style.DialogAnimation);
                 dialog.setView(view);
                 dialog.show();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                 // 设置点击事件
                 TextView send=(TextView)view.findViewById(R.id.send);
