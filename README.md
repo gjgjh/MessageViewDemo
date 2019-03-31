@@ -6,4 +6,4 @@ MessageViewDemo is a demo android app written in Java that lets you view you mes
 
 To build the project, download it and open it in Android Studio. All dependencies should automatically be fetched by Android Studio. The dependencies we used include AMap， CardView, RecyclerView and Material Design.
 
-<img src="https://github.com/gjgjh/MessageViewDemo/blob/master/support_files/ScreenRecord.gif" width = 60% height = 60% />
+<img src="https://github.com/gjgjh/MessageViewDemo/blob/master/support_files/ScreenRecord.gif" width = 40% height = 40% />
